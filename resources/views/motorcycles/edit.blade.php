@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="w-2/3 m-auto">
         <form action="{{ route('motorcycles.update', $motorcycle->id) }}" method="POST">
             @csrf
             @method('put')
-            <div>
-                <label for="">Název:</label>            
-                <x-input type="text" name="name" value="{{ (old('name')) ? old('name') : $motorcycle->name }}"></x-input>
+            <div class="mb-4">
+                <x-label value="Název:" />
+                <x-input type="text" name="name" id="name" value="{{ (old('name')) ? old('name') : $motorcycle->name }}" />
                 <x-error for="name" />
             </div>
-            <div>
-                <label for="">Text:</label>
-                <textarea name="text">{{ (old('text')) ? old('text') : $motorcycle->text }}</textarea>
+            <div class="mb-4">
+                <x-label value="Text:" />
+                <x-textarea name="text" id="text" value="{{ (old('text')) ? old('text') : $motorcycle->text }}" />
                 <x-error for="text" />
             </div>
-            <div>
-                <label for="">Cena:</label>
-                <x-input type="number" name="prize" value="{{ (old('prize')) ? old('prize') : $motorcycle->prize }}"></x-input>
+            <div class="mb-4">
+                <x-label value="Cena:" />
+                <x-input type="number" name="prize" id="prize" value="{{ (old('prize')) ? old('prize') : $motorcycle->prize }}" />
                 <x-error for="prize" />
             </div>
             <x-button>Upravit</x-button>

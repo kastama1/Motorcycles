@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotorcyclesController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,12 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::resource('/motorcycles', MotorcyclesController::class);
+
+Route::resource('/users', UsersController::class);
 
 require __DIR__.'/auth.php';

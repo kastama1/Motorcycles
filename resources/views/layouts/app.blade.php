@@ -20,12 +20,14 @@
         <script src="https://kit.fontawesome.com/a9afc2067f.js" crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
             @include('layouts.navigation')
 
             <!-- Page Content -->
             <main>
-                @yield('content')
+                <div class="w-4/5 min-h-screen m-auto bg-gray-100 px-10 py-5 shadow-lg shadow-slate-500">
+                    @yield('content')
+                </div>
             </main>
         </div>
 

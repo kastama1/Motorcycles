@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="w-2/3 m-auto">
         <form action="{{ route('motorcycles.store') }}" method="POST">
             @csrf
-            <div>
-                <label for="">Název:</label>            
-                <x-input type="text" name="name" value="{{ old('name') }}"></x-input>
+            <div class="mb-4">
+                <x-label value="Název:" />
+                <x-input type="text" name="name" id="name" value="{{ old('name') }}" />
                 <x-error for="name" />
             </div>
-            <div>
-                <label for="">Text:</label>
-                <textarea name="text">{{ old('text') }}</textarea>
+            <div class="mb-4">
+                <x-label value="Text:" />
+                <x-textarea name="text" id="text">{{ old('text') }}</x-textarea>
                 <x-error for="text" />
             </div>
-            <div>
-                <label for="">Cena:</label>
-                <x-input type="number" name="prize" value="{{ old('prize') }}"></x-input>
+            <div class="mb-4">
+                <x-label value="Cena:" />
+                <x-input type="number" name="prize" id="prize" value="{{ old('prize') }}" />
                 <x-error for="prize" />
             </div>
             <x-button>Přidat</x-button>
