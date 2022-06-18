@@ -12,6 +12,7 @@ class Motorcycle extends Model
     protected $fillable = [
         'name',
         'text',
+        'prize',
         'images',
     ];
 }

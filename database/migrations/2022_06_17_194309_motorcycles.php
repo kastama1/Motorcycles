@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('text');
+            $table->integer('prize');
             $table->string('images');
             $table->timestamps();
         });
