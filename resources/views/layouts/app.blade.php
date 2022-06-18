@@ -29,6 +29,8 @@
                     @yield('content')
                 </div>
             </main>
+
+            @include('layouts.footer')
         </div>
 
         @yield('script')

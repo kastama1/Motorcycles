@@ -23,6 +23,10 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
 Route::resource('/motorcycles', MotorcyclesController::class);
 
 Route::resource('/users', UsersController::class);
