@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Motorcycle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MotorcyclesController extends Controller
 {
@@ -15,7 +16,15 @@ class MotorcyclesController extends Controller
     public function index()
     {
         $motorcycles = Motorcycle::all();
-
+        $storage = storage_path();
+        
+        foreach($motorcycles as $motorcycle){
+            if($motorcycle->images){
+                $images = Storage::disk('public')->allFiles( $motorcycle->images . "\\");
+                $motorcycle->images = $images;
+            }
+        }
+        
         return view('motorcycles.index', compact('motorcycles'));
     }
 
@@ -41,12 +50,20 @@ class MotorcyclesController extends Controller
             'name' => 'required|string',
             'text' => 'required',
             'prize' => 'required|integer',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $uid = uniqid();
+        $files = $request->images;
+        foreach ($files as $file) {
+            $path = $file->store("upload/" . $uid);
+        }
 
         Motorcycle::create([
             'name' => $request->input('name'),
             'text' => $request->input('text'),
             'prize' => $request->input('prize'),
+            'images' => "upload\\" . $uid,
         ]);
         
         return redirect(route('motorcycles.index'));
