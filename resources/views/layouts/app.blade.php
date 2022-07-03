@@ -23,7 +23,6 @@
         <div class="min-h-screen bg-white">
             @include('layouts.navigation')
 
-            <!-- Page Content -->
             <main>
                 <div class="w-4/5 min-h-screen m-auto bg-gray-100 px-10 py-5 shadow-lg shadow-slate-500">
                     @yield('content')

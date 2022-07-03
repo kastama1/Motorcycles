@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MotorcyclesController;
 use App\Http\Controllers\UsersController;
 
@@ -31,4 +32,6 @@ Route::resource('/motorcycles', MotorcyclesController::class);
 
 Route::resource('/users', UsersController::class);
 
-require __DIR__.'/auth.php';
+Auth::routes();
+
+Auth::routes(['register' => false]);

@@ -20,14 +20,10 @@
         </div>
         <p class="py-4 text-lg">{{ $motorcycle->text }}</p>
         <p>{{ $motorcycle->prize }} Kč</p>
-        @if ($motorcycle->images)
-            @foreach ($motorcycle->images as $image)
-                <img src="{{ asset("/storage/" . $image) }}" />
-            @endforeach
-        @endif
-    </div>    
+        
 @endforeach
 <div class="relative">
     <x-link class="absolute right-0" href="{{ route('motorcycles.create') }}">Přidat motocykl</x-link>
 </div>
+
 @endsection
