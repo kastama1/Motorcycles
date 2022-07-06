@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MotorcyclesController;
 use App\Http\Controllers\UsersController;
 
@@ -28,10 +27,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::resource('/motorcycles', MotorcyclesController::class);
+Route::resource('/motorcycles', MotorcyclesController::class)->middleware('auth')->only(['create', 'store', 'update', 'edit', 'destroy']);
+Route::resource('/motorcycles', MotorcyclesController::class)->only(['show', 'index']);
 
-Route::resource('/users', UsersController::class);
+Route::resource('/users', UsersController::class)->middleware('auth');
 
-Auth::routes();
-
-Auth::routes(['register' => false]);
+require __DIR__.'/auth.php';
