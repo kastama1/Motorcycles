@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<x-h1>Motocykly</x-h1>
 @foreach ($motorcycles as $motorcycle)
 <div class="border-b-2 border-black">
     <div class="relative">
-        <h1>
+        <h1 class="mb-1 mt-5">
             <x-link class="text-4xl" href="{{ route('motorcycles.show', $motorcycle->id) }}">
                 {{ $motorcycle->name }}
             </x-link>
@@ -22,15 +23,16 @@
         </div>
         @endif
     </div>
-    <p class="py-4 text-lg">{{ $motorcycle->text }}</p>
-    <p>{{ $motorcycle->prize }} Kč</p>
+    <x-p class="text-lg">{{ $motorcycle->text }}</x-p>
+    <x-p>{{ $motorcycle->prize }} Kč</x-p>
+</div>
 
-    @endforeach
+@endforeach
 
-    @if (Auth::check())
-    <div class="relative">
-        <x-link class="absolute right-0" href="{{ route('motorcycles.create') }}">Přidat motocykl</x-link>
-    </div>
-    @endif
+@if (Auth::check())
+<div class="relative">
+    <x-link class="absolute right-0" href="{{ route('motorcycles.create') }}">Přidat motocykl</x-link>
+</div>
+@endif
 
-    @endsection
+@endsection
