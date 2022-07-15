@@ -19,7 +19,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('motorcycles.index')" :active="request()->routeIs('motorcycles.index')">
-                        Motocykly
+                        {{ trans('motorcycle.heading') }}
                     </x-nav-link>
                 </div>
 
@@ -33,13 +33,30 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                        O nás
+                        {{ trans('about.heading') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
-                        Kontakt
+                        {{ trans('contacts.heading') }}
+                    </x-nav-link>
+                </div>
+
+            </div>
+
+            <div class="flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('lang', 'en')">
+                        <img class="p-2" src="{{ asset('/storage/images/flags/united-kingdom.png') }}"
+                            alt="Vlajka Anglie">{{
+                        trans('lang.en') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('lang', 'cs')">
+                        <img class="p-2" src="{{ asset('/storage/images/flags/czech-republic.png') }}"
+                            alt="Vlajka České republiky">{{ trans('lang.cs') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -15,7 +15,7 @@ class MotorcyclesController extends Controller
      */
     public function index()
     {
-        $motorcycles = Motorcycle::all();
+        $motorcycles = Motorcycle::orderBy('created_at')->get();
         $storage = storage_path();
         
         foreach($motorcycles as $motorcycle){
@@ -56,14 +56,14 @@ class MotorcyclesController extends Controller
         $uid = uniqid();
         $files = $request->images;
         foreach ($files as $file) {
-            $path = $file->store("upload/" . $uid);
+            $path = $file->store("public/images/" . $uid);
         }
 
         Motorcycle::create([
             'name' => $request->input('name'),
             'text' => $request->input('text'),
             'prize' => $request->input('prize'),
-            'images' => "upload\\" . $uid,
+            'images' => "images/" . $uid,
         ]);
         
         return redirect(route('motorcycles.index'));
@@ -78,6 +78,11 @@ class MotorcyclesController extends Controller
     public function show($id)
     {
         $motorcycle = Motorcycle::find($id);
+
+        if($motorcycle->images){
+            $images = Storage::disk('public')->allFiles( $motorcycle->images . "\\");
+            $motorcycle->images = $images;
+        }
 
         return(view('motorcycles.show', compact('motorcycle')));
     }
@@ -128,7 +133,11 @@ class MotorcyclesController extends Controller
      */
     public function destroy($id)
     {
-        Motorcycle::find($id)->delete();
+        $motorcycle = Motorcycle::find($id);
+
+        Storage::deleteDirectory("public/" . $motorcycle->images);
+
+        $motorcycle->delete();
 
         return redirect(route('motorcycles.index'));
     }

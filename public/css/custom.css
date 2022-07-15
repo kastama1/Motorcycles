@@ -1,0 +1,5 @@
+.dots {
+    width: 10px;
+    height: 10px;
+    transition: background-color 0.6s ease;
+}

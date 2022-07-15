@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotorcyclesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +17,11 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [PagesController::class, 'index'])->name('index');
+Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/contact', [PagesController::class, 'contacts'])->name('contact');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/lang/{locale}', [LanguageController::class, 'index'])->name('lang');
 
 Route::resource('/motorcycles', MotorcyclesController::class)->middleware('auth')->only(['create', 'store', 'update', 'edit', 'destroy']);
 Route::resource('/motorcycles', MotorcyclesController::class)->only(['show', 'index']);
