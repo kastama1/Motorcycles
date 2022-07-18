@@ -3,12 +3,13 @@
             :active="request()->routeIs('index')">Classic-motorcycles</x-nav-link> -
         @if (Auth::check())
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">{{ __('Odhlásit se') }}</a>
+                        document.getElementById('logout-form').submit();">{{ __(trans('login.button-logout')) }}</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
             {{ csrf_field() }}
         </form>
         @else
-        <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">Přihlásit se pro správu
+        <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">{{
+            trans('login.button-login-to-manage') }}
         </x-nav-link>
         @endif
     </span>

@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<x-h1>Přidat motocykl</x-h1>
+<x-h1>{{ trans('motorcycle.add-motorcycle') }}</x-h1>
 <div class="w-2/3 m-auto">
     <form action="{{ route('motorcycles.store') }}" method="POST" enctype="multipart/form-data" id="image-form">
         @csrf
         <div class="mb-4">
-            <x-label value="Název:" />
+            <x-label value="{{ trans('motorcycle.name') }}:" />
             <x-input type="text" name="name" id="name" value="{{ old('name') }}" />
             <x-error for="name" />
         </div>
         <div class="mb-4">
-            <x-label value="Text:" />
+            <x-label value="{{ trans('motorcycle.description') }}:" />
             <x-textarea name="text" id="text">{{ old('text') }}</x-textarea>
             <x-error for="text" />
         </div>
         <div class="mb-4">
-            <x-label value="Cena:" />
+            <x-label value="{{ trans('motorcycle.prize') }}:" />
             <x-input type="number" name="prize" id="prize" value="{{ old('prize') }}" />
             <x-error for="prize" />
         </div>
         <div class="mb-4">
-            <x-label value="Obrázky:" />
+            <x-label value="{{ trans('motorcycle.images') }}:" />
             <div
                 class="mt-2 relative border-dotted h-48 rounded border-2 border-gray-400 bg-white flex justify-center items-center">
                 <div class="absolute">
                     <div class="flex flex-col items-center"><i class="fa fa-folder-open fa-4x text-black"></i>
-                        <span id="label" class="block text-gray-400 font-normal">Přesuňte soubor nebo vyberte
-                            soubor.</span>
+                        <span id="label" class="block text-gray-400 font-normal">{{ trans('motorcycle.images-text')
+                            }}</span>
                     </div>
                 </div>
                 <input id="image-input" onchange="imageSelect()" type="file" class="h-full w-full opacity-0"
@@ -38,7 +38,7 @@
         <div class="mb-4 grid grid-cols grid-cols-10" id="image-preview">
 
         </div>
-        <x-button>Přidat</x-button>
+        <x-button>{{ trans('motorcycle.add-motorcycle') }}</x-button>
     </form>
 </div>
 @endsection

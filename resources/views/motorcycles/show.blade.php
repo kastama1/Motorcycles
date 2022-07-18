@@ -7,7 +7,7 @@
     <div class="relative m-auto w-4/5">
         @foreach ($motorcycle->images as $image)
         <div>
-            <img class="slides hidden" src="{{ asset('storage/' . $image) }}" alt="">
+            <img class="slides hidden px-10" src="{{ asset('storage/' . $image) }}" alt="">
         </div>
         @endforeach
 
@@ -24,13 +24,15 @@
     </div>
     @endif
     <x-p>{{ $motorcycle->text }}</x-p>
-    <x-p>Cena: {{ $motorcycle->prize }}</x-p>
+    <x-p>{{ trans('motorcycle.prize') }}: {{ $motorcycle->prize }} Kč</x-p>
     @if (Auth::check())
-    <a href="{{ route('motorcycles.edit', $motorcycle->id) }}">Upravit motocykl</a>
+    <x-link href="{{ route('motorcycles.edit', $motorcycle->id) }}">{{ trans('motorcycle.update-motorcycle') }}</x-link>
     <form action="{{ route('motorcycles.destroy', $motorcycle->id) }}" method="POST">
         @csrf
         @method('delete')
-        <button>Smazat motocykl</button>
+        <button
+            class="px-1 pt-1 text-md font-medium leading-5 text-black hover:text-gray-500 hover:underline focus:outline-none transition duration-150 ease-in-out">{{
+            trans('motorcycle.delete-motorcycle') }}</button>
     </form>
     @endif
 </div>

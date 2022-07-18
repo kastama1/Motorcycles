@@ -2,7 +2,7 @@
 
 @section('content')
 <x-h1>{{ trans('motorcycle.heading') }}</x-h1>
-<div class="grid grid-cols-10">
+<div class="grid grid-cols grid-cols-10">
     @foreach ($motorcycles as $key => $motorcycle)
     <div class="col-span-5 bg-white shadow-xl m-3">
         <h1 class="mb-1 mt-5 text-center">
@@ -17,13 +17,14 @@
             </div>
         </a>
         @endif
-        <x-p class="mx-5 text-center">Cena: {{ $motorcycle->prize }} Kč</x-p>
+        <x-p class="mx-5 text-center">{{ trans('motorcycle.prize') }}: {{ $motorcycle->prize }} Kč</x-p>
     </div>
     @endforeach
 </div>
 @if (Auth::check())
 <div class="relative">
-    <x-link class="absolute right-0" href="{{ route('motorcycles.create') }}">Přidat motocykl</x-link>
+    <x-link class="absolute right-0" href="{{ route('motorcycles.create') }}">{{ trans('motorcycle.add-motorcycle') }}
+    </x-link>
 </div>
 @endif
 @endsection

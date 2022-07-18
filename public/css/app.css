@@ -531,11 +531,11 @@ video {
 .top-0 {
   top: 0px;
 }
-.top-1\/2 {
-  top: 50%;
-}
 .bottom-0 {
   bottom: 0px;
+}
+.top-1\/2 {
+  top: 50%;
 }
 .z-50 {
   z-index: 50;
@@ -894,9 +894,6 @@ video {
 .p-4 {
   padding: 1rem;
 }
-.p-5 {
-  padding: 1.25rem;
-}
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -932,6 +929,10 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .pt-1 {
   padding-top: 0.25rem;
