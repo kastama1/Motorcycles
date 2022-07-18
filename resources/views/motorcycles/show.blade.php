@@ -4,17 +4,19 @@
 <x-h1>{{ $motorcycle->name }}</x-h1>
 <div class="border-b-2 border-black">
     @if ($motorcycle->images)
-    <div class="relative m-auto w-4/5">
-        @foreach ($motorcycle->images as $image)
-        <div>
-            <img class="slides hidden px-10" src="{{ asset('storage/' . $image) }}" alt="">
-        </div>
-        @endforeach
+    <div class="relative w-full sm:m-auto sm:w-4/5">
+        <div class="relative">
+            @foreach ($motorcycle->images as $image)
+            <div>
+                <img class="slides hidden px-7 sm:px-10" src="{{ asset('storage/' . $image) }}" alt="">
+            </div>
+            @endforeach
 
-        <a class="absolute left-0 top-1/2 m-2 cursor-pointer" onclick="plusSlides(-1)"><i
-                class="fas fa-angle-left text-4xl"></i></a>
-        <a class="absolute right-0 top-1/2 m-2 cursor-pointer" onclick="plusSlides(1)"><i
-                class="fas fa-angle-right text-4xl"></i></a>
+            <a class="absolute left-0 top-1/2 m-2 cursor-pointer transform -translate-y-1/2" onclick="plusSlides(-1)"><i
+                    class="fas fa-angle-left text-4xl"></i></a>
+            <a class="absolute right-0 top-1/2 m-2 cursor-pointer transform -translate-y-1/2" onclick="plusSlides(1)"><i
+                    class="fas fa-angle-right text-4xl"></i></a>
+        </div>
 
         <div class="text-center">
             @for ($i = 0; $i < count($motorcycle->images); $i++) <span

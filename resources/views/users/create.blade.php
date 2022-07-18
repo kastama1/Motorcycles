@@ -2,7 +2,7 @@
 
 @section('content')
 <x-h1>{{ trans('user.add-user') }}</x-h1>
-<div class="w-2/3 m-auto">
+<div class="w-full sm:w-2/3 sm:m-auto">
     <form action="{{ route('users.store') }}" method="POST">
         @csrf
         <div class="mb-4">

@@ -2,7 +2,7 @@
 
 @section('content')
 <x-h1>{{ trans('motorcycle.update-motorcycle') }}</x-h1>
-<div class="w-2/3 m-auto">
+<div class="w-full sm:w-2/3 sm:m-auto">
     <form action="{{ route('motorcycles.update', $motorcycle->id) }}" method="POST">
         @csrf
         @method('put')

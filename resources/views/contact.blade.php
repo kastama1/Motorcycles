@@ -2,21 +2,22 @@
 
 @section('content')
 <x-h1>{{ trans('contacts.heading') }}</x-h1>
-<div class="grid grid-cols grid-cols-10">
-    <div class="col-span-10">
-        <x-label>{{ trans('contacts.company') }}</x-label>
-        <ul class="mx-4 mb-4">
-            <li>
-                <x-p class="mb-0">Jméno Příjmení</x-p>
-            </li>
-            <li>
-                <x-p class="mb-0">Ulice, číslo domu</x-p>
-            </li>
-            <li>
-                <x-p class="mb-0">PSČ, město</x-p>
-            </li>
-        </ul>
-    </div>
+
+<div>
+    <x-label>{{ trans('contacts.company') }}</x-label>
+    <ul class="mx-4 mb-4">
+        <li>
+            <x-p class="mb-0">Jméno Příjmení</x-p>
+        </li>
+        <li>
+            <x-p class="mb-0">Ulice, číslo domu</x-p>
+        </li>
+        <li>
+            <x-p class="mb-0">PSČ, město</x-p>
+        </li>
+    </ul>
+</div>
+<div class="grid grid-cols grid-cols-5 sm:grid-cols-10">
     <div class="col-span-5">
         <x-label>{{ trans('contacts.czech-contatc') }}</x-label>
         <ul class="mx-4 mb-4">

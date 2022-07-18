@@ -2,11 +2,11 @@
 
 @section('content')
 <x-h1>{{ trans('motorcycle.heading') }}</x-h1>
-<div class="grid grid-cols grid-cols-10">
+<div class="grid grid-cols grid-cols-5 sm:grid-cols-10">
     @foreach ($motorcycles as $key => $motorcycle)
     <div class="col-span-5 bg-white shadow-xl m-3">
         <h1 class="mb-1 mt-5 text-center">
-            <x-link class="text-4xl" href="{{ route('motorcycles.show', $motorcycle->id) }}">
+            <x-link class="text-2xl sm:text-4xl" href="{{ route('motorcycles.show', $motorcycle->id) }}">
                 {{ $motorcycle->name }}
             </x-link>
         </h1>

@@ -2,7 +2,7 @@
 
 @section('content')
 <x-h1>{{ trans('user.update-user') }}</x-h1>
-<div class="w-2/3 m-auto">
+<div class="w-full sm:w-2/3 sm:m-auto">
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('put')

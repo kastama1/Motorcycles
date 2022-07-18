@@ -2,7 +2,7 @@
 
 @section('content')
 <x-h1>{{ trans('login.heading') }}</x-h1>
-<div class="w-2/3 m-auto">
+<div class="w-full sm:w-2/3 sm:m-auto">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 

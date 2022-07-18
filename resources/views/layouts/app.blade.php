@@ -27,7 +27,7 @@
         @include('layouts.navigation')
 
         <main>
-            <div class="w-4/5 min-h-screen m-auto bg-gray-100 px-10 py-5 shadow-lg shadow-slate-500">
+            <div class="w-full sm:w-4/5 min-h-screen m-auto bg-gray-100 px-3 sm:px-10 py-5 shadow-lg shadow-slate-500">
                 @yield('content')
             </div>
         </main>

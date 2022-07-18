@@ -2,7 +2,7 @@
 
 @section('content')
 <x-h1>{{ trans('motorcycle.add-motorcycle') }}</x-h1>
-<div class="w-2/3 m-auto">
+<div class="w-full sm:w-2/3 sm:m-auto">
     <form action="{{ route('motorcycles.store') }}" method="POST" enctype="multipart/form-data" id="image-form">
         @csrf
         <div class="mb-4">
