@@ -47,7 +47,7 @@
                     <figure class="relative">
                         <span class="color-red-600 cursor-pointer absolute top-0 right-0"
                             onclick="deleteImage('{{ $image }}', {{ $key }})"><i class="fas fa-times"></i></span>
-                        <img class="pt-6" src="{{ asset('storage/' . $image) }}" alt="">
+                        <img class="pt-6" src="/storage/{{ $image }}" alt="">
                     </figure>
                 </div>
                 @endforeach
@@ -65,7 +65,7 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js/image.js') }}" defer></script>
+<script src="/js/image.js" defer></script>
 <script>
     function deleteImage(file_name, target){
         $.ajax({

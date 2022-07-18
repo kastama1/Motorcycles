@@ -48,15 +48,14 @@
             <div class="flex">
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('lang', 'en')">
-                        <img class="p-2" src="{{ asset('/storage/images/flags/united-kingdom.png') }}"
-                            alt="Vlajka Anglie">{{
+                        <img class="p-2" src="/images/flags/united-kingdom.png" alt="Vlajka Anglie">{{
                         trans('lang.en') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('lang', 'cs')">
-                        <img class="p-2" src="{{ asset('/storage/images/flags/czech-republic.png') }}"
-                            alt="Vlajka České republiky">{{ trans('lang.cs') }}
+                        <img class="p-2" src="/images/flags/czech-republic.png" alt="Vlajka České republiky">{{
+                        trans('lang.cs') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -115,13 +114,13 @@
         <div class="pt-1 pb-1 border-t border-gray-200">
             <div class="mt-1 space-y-1">
                 <x-responsive-nav-link href="{{ route('lang', 'en') }}"><img class="pr-2 inline-block"
-                        src="{{ asset('/storage/images/flags/united-kingdom.png') }}" alt="Vlajka Anglie">{{
+                        src="{{ asset('/images/flags/united-kingdom.png') }}" alt="Vlajka Anglie">{{
                     trans('lang.en') }}
                 </x-responsive-nav-link>
             </div>
             <div class="mt-1 space-y-1">
                 <x-responsive-nav-link href="{{ route('lang', 'cs') }}"><img class="pr-2 inline-block"
-                        src="{{ asset('/storage/images/flags/czech-republic.png') }}" alt="Vlajka České republiky">{{
+                        src="{{ asset('/images/flags/czech-republic.png') }}" alt="Vlajka České republiky">{{
                     trans('lang.cs') }}
                 </x-responsive-nav-link>
             </div>

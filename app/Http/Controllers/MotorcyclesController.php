@@ -58,7 +58,7 @@ class MotorcyclesController extends Controller
         $uid = uniqid();
         $files = $request->images;
         foreach ($files as $file) {
-            $file->store("public/images/" . $uid);
+            $file->store("images/" . $uid, ['disk' => 'public']);
         }
 
         Motorcycle::create([
@@ -130,7 +130,7 @@ class MotorcyclesController extends Controller
 
         if($files !== null){
         foreach ($files as $file) {
-            $file->store("public/" . $motorcycle->images);
+            $file->store($motorcycle->images, ['disk' => 'public']);
             }
         }
 

@@ -8,7 +8,7 @@
         <div class="relative">
             @foreach ($motorcycle->images as $image)
             <div>
-                <img class="slides hidden px-7 sm:px-10" src="{{ asset('storage/' . $image) }}" alt="">
+                <img class="slides hidden px-7 sm:px-10" src="/storage/{{ $image }}" alt="">
             </div>
             @endforeach
 
