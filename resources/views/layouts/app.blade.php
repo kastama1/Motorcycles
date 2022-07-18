@@ -20,6 +20,9 @@
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/a9afc2067f.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="font-sans antialiased">

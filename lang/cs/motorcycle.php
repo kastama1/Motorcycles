@@ -9,5 +9,7 @@ return [
   'name' => 'Název',
   'description' => 'Popisek',
   'images' => 'Obrázky',
+  'new-images' => 'Náhled nových obrázků',
+  'old-images' => 'Náhled starých obrázků',
   'images-text' => 'Přesuňte nebo vyberte soubor.',
 ];

@@ -24,6 +24,7 @@ Route::get('/contact', [PagesController::class, 'contacts'])->name('contact');
 Route::get('/lang/{locale}', [LanguageController::class, 'index'])->name('lang');
 
 Route::resource('/motorcycles', MotorcyclesController::class)->middleware('auth')->only(['create', 'store', 'update', 'edit', 'destroy']);
+Route::post('/motorcycles/delete-image', [MotorcyclesController::class, 'deleteImage']);
 Route::resource('/motorcycles', MotorcyclesController::class)->only(['show', 'index']);
 
 Route::resource('/users', UsersController::class)->middleware('auth');

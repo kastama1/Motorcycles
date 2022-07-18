@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Motorcycle;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,13 +51,14 @@ class MotorcyclesController extends Controller
             'name' => 'required|string',
             'text' => 'required',
             'prize' => 'required|integer',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "images"    => "required|array",
+            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $uid = uniqid();
         $files = $request->images;
         foreach ($files as $file) {
-            $path = $file->store("public/images/" . $uid);
+            $file->store("public/images/" . $uid);
         }
 
         Motorcycle::create([
@@ -97,6 +99,11 @@ class MotorcyclesController extends Controller
     {
         $motorcycle = Motorcycle::find($id);
 
+        if($motorcycle->images){
+            $images = Storage::disk('public')->allFiles( $motorcycle->images . "\\");
+            $motorcycle->images = $images;
+        }
+
         return view('motorcycles.edit', compact('motorcycle'));
     }
 
@@ -113,10 +120,21 @@ class MotorcyclesController extends Controller
             'name' => 'required|string',
             'text' => 'required',
             'prize' => 'required|integer',
+            "images"    => "nullable|sometimes|array",
+            'images.*' => 'nullable|sometimes|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        Motorcycle::find($id)
-        ->update([
+        $motorcycle = Motorcycle::find($id);
+
+        $files = $request->images;
+
+        if($files !== null){
+        foreach ($files as $file) {
+            $file->store("public/" . $motorcycle->images);
+            }
+        }
+
+        $motorcycle->update([
             'name' => $request->input('name'),
             'text' => $request->input('text'),
             'prize' => $request->input('prize'),
@@ -140,5 +158,14 @@ class MotorcyclesController extends Controller
         $motorcycle->delete();
 
         return redirect(route('motorcycles.index'));
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $data = $request->all();
+
+        if(Storage::exists('public/' . $data['name'])){
+            Storage::delete('public/' . $data['name']);
+        }
     }
 }

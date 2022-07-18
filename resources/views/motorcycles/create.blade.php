@@ -3,7 +3,7 @@
 @section('content')
 <x-h1>{{ trans('motorcycle.add-motorcycle') }}</x-h1>
 <div class="w-full sm:w-2/3 sm:m-auto">
-    <form action="{{ route('motorcycles.store') }}" method="POST" enctype="multipart/form-data" id="image-form">
+    <form action="{{ route('motorcycles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-4">
             <x-label value="{{ trans('motorcycle.name') }}:" />
@@ -31,12 +31,15 @@
                     </div>
                 </div>
                 <input id="image-input" onchange="imageSelect()" type="file" class="h-full w-full opacity-0"
-                    name="images[]" multiple>
+                    name="images[]" multiple accept="image/png, image/jpeg , image/jpg">
             </div>
             <x-error for="images" />
+            <x-error for="images.*" />
         </div>
-        <div class="mb-4 grid grid-cols grid-cols-10" id="image-preview">
-
+        <div class="mb-4 hidden" id="image-div">
+            <x-label class="mb-0" value="{{ trans('motorcycle.new-images') }}:" />
+            <div class="grid grid-cols grid-cols-10" id="image-preview">
+            </div>
         </div>
         <x-button>{{ trans('motorcycle.add-motorcycle') }}</x-button>
     </form>
@@ -44,34 +47,5 @@
 @endsection
 
 @section('script')
-<script>
-    let images = [];
-    function imageSelect(){
-        images = [];
-        let image = document.querySelector('#image-input').files;
-        for (let i = 0; i < image.length; i++) {
-            images.push({
-                'name' : image[i].name,
-                'url' : URL.createObjectURL(image[i]),
-                'file' : image[i],
-            })
-        }
-
-        document.querySelector('#image-preview').innerHTML = imageShow();
-    }
-
-    function imageShow(){
-        let image = "";
-        images.forEach(i => {
-            image += '<div class="col-span-5 p-2"><figure class="relative"><span class="color-red-600 cursor-pointer absolute bottom-0 right-0" onclick="imageDelete(' + images.indexOf(i) + ')"><i class="fas fa-times"></i></span><img src="' + i.url + '" alt=""><figcaption>' + i.name + '</figcaption></figure></div>';
-        });
-
-        return image;
-    }
-
-    function imageDelete(e){
-        images.splice(e, 1);
-        document.querySelector('#image-preview').innerHTML = imageShow();
-    }
-</script>
+<script src="{{ asset('js/image.js') }}" defer></script>
 @endsection

@@ -9,5 +9,7 @@ return [
   'name' => 'Name',
   'description' => 'Description',
   'images' => 'Images',
+  'new-images' => 'New images preview',
+  'old-images' => 'Old images preview',
   'images-text' => 'Move a file or select a file.',
-];
+]; 
