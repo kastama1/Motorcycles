@@ -1,13 +1,14 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-    content: [
-        "./storage/framework/views/*.php",
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
-    ],
-
+    purge: {
+        enabled: true,
+        content: [
+            "./storage/framework/views/*.php",
+            "./resources/**/*.blade.php",
+            "./resources/**/*.js",
+        ],
+    },
     theme: {
         extend: {
             fontFamily: {
